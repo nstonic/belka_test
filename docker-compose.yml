@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:14.8
+    environment:
+      POSTGRES_PASSWORD: belka
+      POSTGRES_USER: belka
+      POSTGRES_DB: belka
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  django:
+    build:
+      context: ./django
+    env_file:
+    - .env
+    environment:
+      POSTGRES_URL: postgres://belka:belka@postgres:5432/belka
+    command: bash -c "python3 manage.py runserver 0.0.0.0:8000"
+    restart: always
+    ports:
+      - 127.0.0.1:8000:8000
+    volumes:
+      - ./django/src:/opt/app/src/
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
