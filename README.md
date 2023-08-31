@@ -20,16 +20,16 @@ $ docker compose build
 $ docker compose run --rm django manage.py migrate
 ```
 
-Загрузите в БД тестовые данные:
-
-```shell
-$ docker compose exec postgres psql -U belka -f /test_data/postgres.sql
-```
-
 Запустите докер-контейнеры:
 
 ```shell
 $ docker compose up
+```
+
+В новой консоли, не выключая работающий контейнер, загрузите в БД тестовые данные:
+
+```shell
+$ docker compose exec postgres psql -U belka -f /test_data/postgres.sql
 ```
 
 Сайт доступен по адресу [127.0.0.1:8000](http://127.0.0.1:8000). Вход в админку находится по
