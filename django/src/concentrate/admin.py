@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from concentrate.models import ConcentrateData
+
+
+@admin.register(ConcentrateData)
+class ConcentrateDataAdmin(admin.ModelAdmin):
+    list_display = [
+        'date'
+    ]
