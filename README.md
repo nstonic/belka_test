@@ -23,7 +23,7 @@ $ docker compose run --rm django manage.py migrate
 Загрузите в БД тестовые данные:
 
 ```shell
-$ docker compose exec postgres psql -U proxys-telegram-bot -f /test_data/postgres.sql
+$ docker compose exec postgres psql -U belka -f /test_data/postgres.sql
 ```
 
 Запустите докер-контейнеры:
